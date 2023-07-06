@@ -1,0 +1,15 @@
+---
+groups:
+  publish:
+    generators:
+    - name: "fernapi/fern-python-sdk"
+      version: "0.3.7"
+      output: !<npm>
+        package-name: "fern-optimizely"
+        token: "${PYPI_TOKEN}"
+      config:
+        client_class_name:
+          empty: false
+          present: true
+      github:
+        repository: "fern-optimizely/optimizely-python"
