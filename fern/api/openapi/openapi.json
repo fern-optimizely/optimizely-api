@@ -1,0 +1,457 @@
+{
+  "openapi": "3.0.2",
+  "info": {
+    "title": "Optimizely AI backend",
+    "description": "OpenAPI schema",
+    "version": "0.0.1",
+    "x-logo": {
+      "url": "https://app.optimizely.com/static/img/rebrand/logo.svg"
+    }
+  },
+  "paths": {
+    "/api/raw/openai/{path}": {
+      "put": {
+        "x-fern-sdk-group-name": "proxy",
+        "x-fern-sdk-method-name": "openai",
+        "tags": [
+          "Proxy"
+        ],
+        "summary": "Azure Openai Proxy",
+        "description": "Proxy requests to Azure OpenAI REST API path /openai/{path},\nsee [Azure OpenAI API reference](https://learn.microsoft.com/en-us/azure/cognitive-services/openai/reference).\n\n**Note:** The request is forwarded to a random backend, some deployments are not available in all backends.",
+        "operationId": "azure_openai_proxy_api_raw_openai__path__get",
+        "parameters": [
+          {
+            "required": true,
+            "schema": {
+              "title": "Path",
+              "type": "string"
+            },
+            "name": "path",
+            "in": "path"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "title": "Payload",
+                "type": "object"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Proxy"
+        ],
+        "x-fern-sdk-group-name": "proxy",
+        "x-fern-sdk-method-name": "azureOpenai",
+        "summary": "Azure Openai Proxy",
+        "description": "Proxy requests to Azure OpenAI REST API path /openai/{path},\nsee [Azure OpenAI API reference](https://learn.microsoft.com/en-us/azure/cognitive-services/openai/reference).\n\n**Note:** The request is forwarded to a random backend, some deployments are not available in all backends.",
+        "operationId": "azure_openai_proxy_api_raw_openai__path__post",
+        "parameters": [
+          {
+            "required": true,
+            "schema": {
+              "title": "Path",
+              "type": "string"
+            },
+            "name": "path",
+            "in": "path"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "title": "Payload",
+                "type": "object"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/models": {
+      "get": {
+        "x-fern-sdk-group-name": "models",
+        "x-fern-sdk-method-name": "get",
+        "tags": [
+          "layer2"
+        ],
+        "summary": "Get Models",
+        "operationId": "get_models_api_models_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ModelsResponseDTO"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/model/{name}": {
+      "get": {
+        "tags": [
+          "layer2"
+        ],
+        "x-fern-sdk-group-name": "models",
+        "x-fern-sdk-method-name": "getByName",
+        "summary": "Get Model",
+        "operationId": "get_model_api_model__name__get",
+        "parameters": [
+          {
+            "required": true,
+            "schema": {
+              "title": "Name"
+            },
+            "name": "name",
+            "in": "path"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ModelDTO"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/tokens": {
+      "post": {
+        "tags": [
+          "layer2"
+        ],
+        "summary": "Tokens",
+        "x-fern-sdk-method-name": "chat",
+        "operationId": "tokens_api_tokens_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ChatRequestDTO"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TokensResponseDTO"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/complete": {
+      "post": {
+        "tags": [
+          "layer2"
+        ],
+        "x-fern-sdk-method-name": "chatCompletion",
+        "summary": "Chat Completion",
+        "operationId": "chat_completion_api_complete_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ChatRequestDTO"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ChatCompletionsResponseDTO"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "ChatCompletionsResponseDTO": {
+        "title": "ChatCompletionsResponseDTO",
+        "required": [
+          "completion",
+          "usage"
+        ],
+        "type": "object",
+        "properties": {
+          "completion": {
+            "$ref": "#/components/schemas/ChatMessageDTO"
+          },
+          "usage": {
+            "$ref": "#/components/schemas/ChatCompletionsUsageDTO"
+          }
+        }
+      },
+      "ChatCompletionsUsageDTO": {
+        "title": "ChatCompletionsUsageDTO",
+        "required": [
+          "prompt_tokens",
+          "completion_tokens",
+          "total_tokens"
+        ],
+        "type": "object",
+        "properties": {
+          "prompt_tokens": {
+            "title": "Prompt Tokens",
+            "type": "integer"
+          },
+          "completion_tokens": {
+            "title": "Completion Tokens",
+            "type": "integer"
+          },
+          "total_tokens": {
+            "title": "Total Tokens",
+            "type": "integer"
+          }
+        }
+      },
+      "ChatRequestDTO": {
+        "title": "ChatRequestDTO",
+        "required": [
+          "model",
+          "messages"
+        ],
+        "type": "object",
+        "properties": {
+          "model": {
+            "title": "Model",
+            "type": "string"
+          },
+          "messages": {
+            "title": "Messages",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ChatMessageDTO"
+            }
+          }
+        }
+      },
+      "HTTPValidationError": {
+        "title": "HTTPValidationError",
+        "type": "object",
+        "properties": {
+          "detail": {
+            "title": "Detail",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ValidationError"
+            }
+          }
+        }
+      },
+      "ModelDTO": {
+        "title": "ModelDTO",
+        "required": [
+          "name",
+          "vendor_name",
+          "vendor",
+          "token_limit",
+          "millicents_per_1k"
+        ],
+        "type": "object",
+        "properties": {
+          "name": {
+            "title": "Name",
+            "type": "string"
+          },
+          "vendor_name": {
+            "title": "Vendor Name",
+            "type": "string"
+          },
+          "vendor": {
+            "title": "Vendor",
+            "type": "string"
+          },
+          "token_limit": {
+            "title": "Token Limit",
+            "type": "integer"
+          },
+          "millicents_per_1k": {
+            "title": "Millicents Per 1K",
+            "type": "integer"
+          }
+        }
+      },
+      "ModelsResponseDTO": {
+        "title": "ModelsResponseDTO",
+        "required": [
+          "models"
+        ],
+        "type": "object",
+        "properties": {
+          "models": {
+            "title": "Models",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ModelDTO"
+            }
+          }
+        }
+      },
+      "TokensResponseDTO": {
+        "title": "TokensResponseDTO",
+        "required": [
+          "tokens"
+        ],
+        "type": "object",
+        "properties": {
+          "tokens": {
+            "title": "Tokens",
+            "type": "integer"
+          }
+        }
+      },
+      "ValidationError": {
+        "title": "ValidationError",
+        "required": [
+          "loc",
+          "msg",
+          "type"
+        ],
+        "type": "object",
+        "properties": {
+          "loc": {
+            "title": "Location",
+            "type": "array",
+            "items": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            }
+          },
+          "msg": {
+            "title": "Message",
+            "type": "string"
+          },
+          "type": {
+            "title": "Error Type",
+            "type": "string"
+          }
+        }
+      },
+      "ChatMessageDTO": {
+        "title": "ChatMessageDTO",
+        "required": [
+          "role",
+          "content"
+        ],
+        "type": "object",
+        "properties": {
+          "role": {
+            "title": "Role",
+            "type": "string"
+          },
+          "content": {
+            "title": "Content",
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

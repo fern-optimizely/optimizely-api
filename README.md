@@ -1,14 +1,12 @@
-#  API
+#  Optimizely API
 
-Tagging a release on this repository will update the:
-
-
+Tagging a release on this repository will update the Python SDK.
 
 ## What is in this repository?
 
 This repository contains
 
-- 's OpenAPI spec which lives in the [openapi](./fern/api/openapi/) folder
+- Optimizely's OpenAPI spec which lives in the [openapi](./fern/api/openapi/) folder
 - Generators (see [generators.yml](./fern/api/generators.yml))
 
 To make sure that the OpenAPI is valid, you can use the Fern CLI.

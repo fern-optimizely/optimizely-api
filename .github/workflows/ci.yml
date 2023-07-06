@@ -32,5 +32,5 @@ jobs:
       - name: Generate SDKs
         env:
           FERN_TOKEN: ${{ secrets.FERN_TOKEN }}
-
-        run: fern generate --group  --log-level debug --version ${{ github.ref_name }}
+          PYPI_TOKEN: ${{ secrets.PYPI_TOKEN }}
+        run: fern generate --group publish --log-level debug --version ${{ github.ref_name }}
