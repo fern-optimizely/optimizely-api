@@ -1,14 +1,16 @@
----
+default-group: publish
 groups:
   publish:
     generators:
-    - name: "fernapi/fern-python-sdk"
-      version: "0.3.7"
-      output:
-        location: pypi
-        package-name: "fern-optimizely"
-        token: "${PYPI_TOKEN}"
-      config:
-        client_class_name: Optimizely
-      github:
-        repository: "fern-optimizely/optimizely-python"
+      - name: fernapi/fern-python-sdk
+        version: 0.3.7
+        output:
+          location: pypi
+          package-name: fern-optimizely
+          token: ${PYPI_TOKEN}
+        github:
+          repository: fern-optimizely/optimizely-python
+        config:
+          client_class_name: Optimizely
+      - name: fernapi/fern-typescript-browser-sdk
+        version: 0.6.4
