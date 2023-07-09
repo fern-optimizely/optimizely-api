@@ -16,7 +16,7 @@ groups:
       version: 0.6.4
       output:
         location: npm
-        package-name: fern-optimizely-browser
+        package-name: "@fern-api/optimizely-browser"
         token: ${NPM_TOKEN}
       config:
         namespaceExport: Optimizely
