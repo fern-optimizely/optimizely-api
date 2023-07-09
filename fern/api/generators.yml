@@ -12,3 +12,13 @@ groups:
         client_class_name: Optimizely
       github:
         repository: "fern-optimizely/optimizely-python"
+    - name: fernapi/fern-typescript-browser-sdk
+      version: 0.6.4
+      output:
+        location: npm
+        package-name: fern-optimizely-browser
+        token: ${NPM_TOKEN}
+      config:
+        namespaceExport: Optimizely
+      github:
+        repository: "fern-optimizely/optimizely-typescript-browser"
