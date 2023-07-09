@@ -1,4 +1,3 @@
-default-group: publish
 groups:
   publish:
     generators:
@@ -14,3 +13,11 @@ groups:
           client_class_name: Optimizely
       - name: fernapi/fern-typescript-browser-sdk
         version: 0.6.4
+        output:
+            location: npm
+            package-name: fern-optimizely-browser
+            token: ${NPM_TOKEN}
+          config:
+            namespaceExport: Optimizely
+          github:
+            repository: fern-optimizely/typescript-browser
