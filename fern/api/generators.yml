@@ -21,4 +21,4 @@ groups:
       config:
         namespaceExport: Optimizely
       github:
-        repository: fern-optimizely/typescript-browser
+        repository: "fern-optimizely/optimizely-typescript-browser"
