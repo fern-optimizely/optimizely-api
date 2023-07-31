@@ -1,29 +1,38 @@
 groups:
   publish:
+    docs:
+      domain: optimizely-eleanor.docs.buildwithfern.com
     generators:
       - name: fernapi/fern-python-sdk
         version: 0.3.10
         output:
           location: pypi
-          package-name: fern-optimizely
+          package-name: optimizely-eleanor-sdk
           token: ${PYPI_TOKEN}
         github:
-          repository: fern-optimizely/optimizely-python
+          repository: optimizely/eleanor-python-sdk
         config:
           client_class_name: Optimizely
       - name: fernapi/fern-typescript-browser-sdk
         version: 0.6.4
         output:
           location: npm
-          package-name: '@fern-api/optimizely-browser'
+          package-name: '@optimizely/eleanor-browser'
           token: ${NPM_TOKEN}
         github:
-          repository: fern-optimizely/optimizely-typescript-browser
+          repository: optimizely/eleanor-typescript-browser-sdk
         config:
           namespaceExport: Optimizely
       - name: fernapi/fern-go-sdk
         version: 0.0.14
         github:
-          repository: fern-optimizely/optimizely-go
-    docs:
-      domain: optimizely-staging.docs.buildwithfern.com
+          repository: optimizely/eleanor-go-sdk
+      - name: fernapi/fern-java-sdk
+        version: 0.3.7
+        github:
+          repository: optimizely/eleanor-java-sdk
+        output:
+          location: maven
+          coordinate: com.optimizely:eleanor
+          username: ${MAVEN_USERNAME}
+          password: ${MAVEN_TOKEN}

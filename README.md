@@ -1,12 +1,16 @@
 #  Optimizely API
 
-Tagging a release on this repository will update the Python SDK.
+Tagging a release on this repository will update the following clients
+- [Browser Typescript SDK](https://github.com/optimizely/eleanor-typescript-browser-sdk)
+- [Python SDK](https://github.com/optimizely/eleanor-python-sdk)
+- [Go SDK](https://github.com/optimizely/eleanor-go-sdk)
+- [Java SDK](https://github.com/optimizely/eleanor-java-sdk)
 
 ## What is in this repository?
 
 This repository contains
 
-- Optimizely's OpenAPI spec which lives in the [openapi](./fern/api/openapi/) folder
+- Eleanor's OpenAPI spec which lives in the [openapi](./fern/api/openapi/) folder
 - Generators (see [generators.yml](./fern/api/generators.yml))
 
 To make sure that the OpenAPI is valid, you can use the Fern CLI.
@@ -18,7 +22,7 @@ fern check
 
 ## What are generators?
 
-Generators read in your API Definition and output artifacts (e.g. ) and are tracked in [generators.yml](./fern/api/generators.yml).
+Generators read in your API Definition and output artifacts (e.g. python-sdk, java-sdk, typescript-browser-sdk, go-sdk) and are tracked in [generators.yml](./fern/api/generators.yml).
 
 To trigger the generators run:
 
