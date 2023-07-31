@@ -1,24 +1,31 @@
----
 groups:
   publish:
     generators:
-    - name: "fernapi/fern-python-sdk"
-      version: "0.3.7"
-      output:
-        location: pypi
-        package-name: "fern-optimizely"
-        token: "${PYPI_TOKEN}"
-      config:
-        client_class_name: Optimizely
-      github:
-        repository: "fern-optimizely/optimizely-python"
-    - name: fernapi/fern-typescript-browser-sdk
-      version: 0.6.4
-      output:
-        location: npm
-        package-name: "@fern-api/optimizely-browser"
-        token: ${NPM_TOKEN}
-      config:
-        namespaceExport: Optimizely
-      github:
-        repository: "fern-optimizely/optimizely-typescript-browser"
+      - name: fernapi/fern-python-sdk
+        version: 0.3.10
+        output:
+          location: pypi
+          package-name: fern-optimizely
+          token: ${PYPI_TOKEN}
+        github:
+          repository: fern-optimizely/optimizely-python
+        config:
+          client_class_name: Optimizely
+      - name: fernapi/fern-typescript-browser-sdk
+        version: 0.7.3
+        output:
+          location: npm
+          package-name: '@fern-api/optimizely-browser'
+          token: ${NPM_TOKEN}
+        github:
+          repository: fern-optimizely/optimizely-typescript-browser
+        config:
+          namespaceExport: Optimizely
+      - name: fernapi/fern-go-sdk
+        version: 0.0.14
+        github:
+          repository: fern-optimizely/optimizely-go
+  publish-docs:
+    docs:
+      domain: optimizely-staging.docs.buildwithfern.com
+    generators: []
