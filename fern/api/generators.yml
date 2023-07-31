@@ -25,7 +25,5 @@ groups:
         version: 0.0.14
         github:
           repository: fern-optimizely/optimizely-go
-  publish-docs:
     docs:
       domain: optimizely-staging.docs.buildwithfern.com
-    generators: []
